@@ -1,0 +1,26 @@
+# The following is standard Spring Security OAuth2 configuration.
+#jdbc:sqlserver://rzmssqldb.database.windows.net:1433;database=MLAUEAPP;user=db2inst1@rzmssqldb;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+
+#debug: true
+spring:    
+  security:    
+    oauth2:
+      resourceserver:
+        jwt:
+          # Replace with the domain of your Auth0 tenant.
+          # Note the trailing slash is important!
+          issuer-uri: https://ssologin.metlife.com.au/sso
+          #issuer-uri: https://dev-hqe4jlhw.au.auth0.com/
+          jwk-set-uri: https://ssologin.metlife.com.au/sso/ext/oauth/jwks
+          #jwk-set-uri: https://dev-hqe4jlhw.au.auth0.com/.well-known/jwks.json
+     
+  mvc:
+    log-request-details: true
+  
+logging:
+  #level: DEBUG
+  file: /home/LogFiles/boot.log
+  #  org.hibernate.SQL: DEBUG
+   # org.hibernate.type: TRACE
+           
+          
